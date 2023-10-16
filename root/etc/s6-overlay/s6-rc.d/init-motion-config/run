@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# create folders
+mkdir -p \
+    /config
+
+# permissions
+lsiown abc:abc \
+    /config/
+
+# copy default config file if it doesn't exist
+if [[ ! -f /config/motion.conf ]]; then
+    cp /etc/motion/motion.conf /config/motion.conf
+fi
